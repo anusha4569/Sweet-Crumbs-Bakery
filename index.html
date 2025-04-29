@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Crumbs Bakery</title>
+    <meta name="title" content="Sweet Crumbs - Rich & Exotic Cakes">
+    <meta name="description" content="This is a Bakery Website made by Anusha">
+
+    <link rel="shortcut icon" href="images/logo.png" type="image/svg+xml">
+    
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vidaloka&display=swap');
+
+:root{
+  --primary-color:  #c98d83;
+  --secondary : #783b31;
+  --bg: #f2f1ec;
+  --black: #000;
+  --white: #fff;
+  --box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+*{
+  font-family: 'Vidaloka', sans-serif;
+  margin:0; padding:0;
+  box-sizing: border-box;
+  outline: none; border:none;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: .2s linear;
+}
+
+html{
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-padding-top: 9rem;
+  scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar{
+  width: .8rem;
+}
+
+html::-webkit-scrollbar-track{
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb{
+  background: var(--primary-color);
+  border-radius: 5rem;
+}
+
+section{
+  padding: 2rem 7%;
+}
+
+.heading{
+  text-align: center;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+  padding: 1.2rem 0;
+  font-size: 4rem;
+}
+
+.heading span{
+  color: var(--secondary);
+  text-transform: uppercase;
+}
+
+.btn{
+  margin-top: 1rem;
+  display: inline-block;
+  padding: 1rem 3rem;
+  font-size: 1.7rem;
+  color: var(--white);
+  border-radius: .5rem;
+  box-shadow: var(--box-shadow);
+  background: var(--primary-color);
+  cursor: pointer;
+}
+
+.btn:hover{
+  background: var(--secondary);
+}
+
+/* header */
+
+.header{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: var(--bg);
+  box-shadow: var(--box-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 9%;
+}
+
+.header .logo{
+  font-size: 2.5rem;
+  font-weight: bolder;
+  color: var(--black);
+}
+
+.header .logo i{
+  color: var(--secondary);
+  padding-right: .5rem;
+}
+
+.header .navbar a{
+  font-size: 1.7rem;
+  color: var(--black);
+  margin: 0 1rem;
+}
+
+.header .navbar a:hover{
+  color: var(--primary-color);
+}
+
+.header .icons div{
+  font-size: 2.5rem;
+  margin-left: 1.7rem;
+  color: var(--black);
+  cursor: pointer;
+}
+
+.header .icons div:hover{
+  color: var(--primary-color);
+}
+
+#menu-btn{
+  display: none;
+}
+
+/* shopping cart */
+
+.cart-items-container{
+  position: fixed;
+  top: 0; right: -105%;
+  width: 35rem;
+  background: var(--white);
+  display: flex;
+  flex-flow: column;
+  gap: 2rem;
+  justify-content: center;
+  height: 100%;
+  z-index: 1200;
+  padding: 2rem;
+  text-align: center;
+}
+
+.cart-items-container.active{
+  right: 0;
+  box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.8);
+}
+
+.cart-items-container #close-form{
+  position: absolute;
+  top: 1.5rem;
+  right: 2.5rem;
+  font-size: 4rem;
+  cursor: pointer;
+  color: var(--black);
+}
+
+.cart-items-container #close-form:hover{
+  transform: rotate(90deg);
+  color: var(--primary-color);
+}
+
+.cart-items-container .title{
+  font-size: 2.5rem;
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+}
+
+.cart-items-container .cart-item{
+  position: relative;
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.cart-items-container .cart-item .fa-times{
+  position: absolute;
+  top: 1rem; right: 1rem;
+  font-size: 2rem;
+  color: var(--black);
+  cursor: pointer;
+}
+
+.cart-items-container .cart-item .fa-times:hover{
+  color: var(--primary-color);
+}
+
+.cart-items-container .cart-item img{
+  height: 7rem;
+}
+
+.cart-items-container .cart-item .content h3{
+  font-size: 2rem;
+  color: var(--black);
+  padding-bottom: .5rem;
+}
+
+.cart-items-container .cart-item .content .price{
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  text-align: left;
+}
+
+/* end */
+
+/* home */
+
+@keyframes fadeIn{
+  0%{
+    transform: translateY(-4rem) scale(1.1);
+    opacity: 0;
+  }
+}
+
+.home{
+  padding: 0;
+}
+
+.home .slide{
+  min-height: 100vh;
+  background-size: cover !important;
+  background-position: center !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home .slide::before{
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%; width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: -1;
+}
+
+.home .slide .content{
+  text-align: center;
+  width: 70rem;
+  display: none;
+}
+
+.home .slide .content h3{
+  font-size: 6rem;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 1.2;
+  padding: 2rem 0;
+  animation: fadeIn 0.4s cubic-bezier(.54, 1.3,.63,1.34) .2s backwards;
+}
+
+.home .slide .content .btn{
+  animation: fadeIn 0.4s cubic-bezier(.54, 1.3,.63,1.34) .4s backwards;
+}
+
+.home .swiper-slide-active .content{
+  display: inline-block;
+}
+
+.swiper-button-next,
+.swiper-button-prev{
+  height: 4rem;
+  width: 4rem;
+  line-height: 4rem;
+  margin-left: 1.5rem;
+  background: var(--white);
+  color: var(--black);
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover{
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after{
+  font-size: 1.5rem;
+}
+
+/* end */
+
+/* banner */
+
+.banner{
+  background-image: url('images/banner-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+.banner img{
+  margin-top: 3rem;
+  height: 100%;
+  width: 100%;
+}
+
+/* banner end*/
+
+/* about */
+
+.about .row{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.about .row .image{
+  flex: 1 1 40rem;
+}
+
+.about .row .image img{
+  width: 100%;
+  height: 100%;
+}
+
+.about .row .content{
+  flex: 1 1 40rem;
+}
+
+.about .row .content h3{
+  color: var(--black);
+  font-size: 3.5rem;
+  line-height: 1.5;
+}
+
+.about .row .content h3 span{
+  color: var(--secondary);
+}
+
+.about .row .content p{
+  font-size: 1.4rem;
+  color: #444;
+  padding: 1rem 0;
+  line-height: 2;
+}
+
+/* about end*/
+
+/* product */
+
+.product{
+  background: var(--bg);
+}
+
+.product .box-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem,1fr));
+  gap: 2rem;
+}
+
+.product .box-container .box{
+  background: var(--white);
+  border-radius: .5rem;
+  box-shadow: var(--box-shadow);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.product .box-container .box .image{
+  height: 35rem;
+  width: 100%;
+  padding: 1.1rem;
+}
+
+.product .box-container .box .image img{
+  height: 100%;
+  width: 100%;
+  border-radius: .5rem;
+  object-fit: cover;
+}
+
+.product .box-container .box .content{
+  padding: 2rem;
+  padding-top: 0;
+}
+
+.product .box-container .box .content h3{
+  color: var(--black);
+  font-size: 2.5rem;
+}
+
+.product .box-container .box .content .stars{
+  padding: 1rem 0;
+}
+
+.product .box-container .box .content .stars i{
+  font-size: 1.7rem;
+  color: var(--secondary);
+}
+
+.product .box-container .box .content .price{
+  font-size: 2.5rem;
+  font-weight: bolder;
+  color: var(--secondary);
+  margin-right: 1rem;
+}
+
+/* product end */
+
+/* gallery */
+
+.gallery .gallery-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 2rem;
+}
+
+.gallery .gallery-container .box{
+  height: 40rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery .gallery-container .box img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.gallery .gallery-container .box:hover img{
+  transform: scale(1.1);
+}
+
+.gallery .gallery-container .box .icons{
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0; left: 0;
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.gallery .gallery-container .box .icons i{
+  font-size: 6rem;
+  color: var(--white);
+}
+
+.gallery .gallery-container .box:hover .icons{
+  display: flex;
+}
+
+
+/* gallery end*/
+
+
+/* weekly promotions */
+
+.promotion{
+  background-image: url('images/promotion.jpg');
+  background-repeat: no-repeat;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+.promotion .box-container{
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 4rem;
+}
+
+.promotion .box-container .box{
+  flex: 1 1 55rem;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.promotion .box-container .box .content{
+  text-align: center;
+}
+
+.promotion .box-container .box .content h3{
+  font-size: 3rem;
+  color: var(--black);
+}
+
+.promotion .box-container .box .content p{
+  font-size: 1.4rem;
+  color: #444;
+  padding: 1rem 0;
+  line-height: 1.8;
+}
+
+/* weekly promotions ends*/
+
+/* team */
+
+.team .box-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 2rem;
+}
+
+.team .box-container .box{
+  background: var(--white);
+  border-radius: .5rem;
+  box-shadow: var(--box-shadow);
+  text-align: center;
+}
+
+.team .box-container .box .image{
+  height: 35rem;
+  width: 100%;
+  padding: 1.1rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.team .box-container .box .image img{
+  height: 100%;
+  width: 100%;
+  border-radius: .5rem;
+  object-fit: cover;
+}
+
+.team .box-container .box:hover .image img{
+  transform: scale(1.1);
+}
+
+.team .box-container .box .content{
+  padding: 2rem;
+  padding-top: 0;
+}
+
+.team .box-container .box .content h3{
+  color: var(--black);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.team .box-container .box .content p{
+  color: var(--black);
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
+}
+
+.team .box-container .box .content .share i{
+  height: 4.5rem;
+  width: 4.5rem;
+  line-height: 4.5rem;
+  background: none;
+  border-radius: .5rem;
+  font-size: 2rem;
+  color: var(--primary-color);
+  border: .1rem solid var(--primary-color);
+  margin: .5rem;
+}
+
+.team .box-container .box .content .share i:hover{
+  color: var(--white);
+  border: .1rem solid var(--secondary);
+  background: var(--secondary);
+  box-shadow: var(--box-shadow);
+  transition: .4s linear;
+  cursor: pointer;
+}
+
+/* team */
+
+/* parallax */
+
+.parallax{
+  min-height: 100vh;
+  background-image: url('images/parallax.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover !important;
+  background-position: center !important;
+  z-index: 0;
+  position: relative;
+}
+
+.parallax::before{
+  content: '';
+  position: absolute;
+  top: 0; left: 0; 
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: -1;
+}
+
+.parallax .box-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 2rem;
+}
+
+.parallax .box-container .box{
+  text-align: center;
+  justify-content: center;
+}
+
+.parallax .box-container .box .image{
+  padding-top: 5rem;
+}
+
+.parallax .box-container .box .image img{
+  height: 35%;
+  width: 35%;
+  object-fit: cover;
+}
+
+.parallax .box-container .box .content{
+  padding: 2rem;
+}
+
+.parallax .box-container .box .content h3{
+  color: var(--white);
+  font-size: 2.5rem;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+.parallax .box-container .box .content p{
+  color: var(--white);
+  font-size: 1.4rem;
+  line-height: 1.8;
+}
+
+/* parallax end */
+
+/* review */
+
+.review{
+  background: var(--bg);
+}
+
+.review .box-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 1.5rem;
+}
+
+.review .box-container .box{
+  border: .1rem solid rgba(0, 0, 0, 0.2);
+  border-radius: .5rem;
+  box-shadow: var(--box-shadow);
+  text-align: center;
+  padding: 3rem 2rem;
+  background: var(--white);
+}
+
+.review .box-container .box .user{
+  height: 7rem;
+  width: 7rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.review .box-container .box h3{
+  padding: 1rem 0;
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+.review .box-container .box .stars i{
+  font-size: 1.5rem;
+  color: var(--secondary);
+}
+
+.review .box-container .box p{
+  font-size: 1.5rem;
+  line-height: 1.8;
+  color: #444;
+  padding-top: 1rem;
+}
+
+/* review end */
+
+/* order */
+
+.order .row{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.order .row .image{
+  flex: 1 1 30rem;
+}
+
+.order .row .image img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.order .row form{
+  flex: 1 1 50rem;
+  padding: 5rem;
+}
+
+.order .row form .inputBox{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.order .row form .inputBox input,
+.order .row form textarea{
+  padding: 1rem;
+  margin: 1rem 0;
+  font-size: 1.7rem;
+  color: var(--secondary);
+  text-transform: capitalize;
+  background: var(--bg);
+  border-radius: .5rem;
+  width: 49%;
+}
+
+.order .row form .inputBox input:focus,
+.order .row form textarea:focus{
+  border: .1rem solid var(--primary-color);
+}
+
+.order .row form textarea{
+  width: 100%;
+  resize: none;
+  height: 15rem;
+}
+
+/* order */
+
+/* footer */
+
+.footer{
+  background: var(--bg);
+  text-align: center;
+}
+
+.footer .box-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  gap: 2rem;
+}
+
+.footer .box-container .box h3{
+  text-transform: capitalize;
+  font-size: 2.2rem;
+  color: var(--secondary);
+  padding: 1rem 0;
+}
+
+.footer .box-container .box p{
+  font-size: 1.5rem;
+  line-height: 2;
+  color: #444;
+  padding: .5rem 0;
+}
+
+.footer .box-container .box .share{
+  margin-top: 1rem;
+}
+
+.footer .box-container .box .share a{
+  height: 4.5rem;
+  width: 4.5rem;
+  line-height: 4.5rem;
+  border-radius: 10%;
+  font-size: 1.7rem;
+  background: var(--primary-color);
+  color: var(--white);
+  margin-right: .3rem;
+}
+
+.footer .box-container .box .share a:hover{
+  background: var(--secondary);
+}
+
+.footer .box-container .box .link{
+  font-size: 1.7rem;
+  line-height: 2;
+  color: var(--primary-color);
+  padding: .5rem 0;
+  display: block;
+}
+
+.footer .box-container .box .link:hover{
+  color: var(--secondary);
+  text-decoration: underline;
+}
+
+.footer .credit{
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 3rem;
+  font-size: 2rem;
+  text-transform: capitalize;
+  color: var(--primary-color);
+  border-top: .1rem solid var(--secondary);
+}
+
+.footer .credit span{
+  color: var(--secondary);
+}
+
+
+
+
+
+/* footer */
+
+/* media queries */
+
+@media (max-width: 991px){
+
+  html{
+    font-size: 55%;
+  }
+
+  .header{
+    padding: 2rem;
+  }
+
+  section{
+    padding: 2rem;
+  }
+
+}
+
+@media (max-width: 768px){
+  #menu-btn{
+    display: inline-block;
+  }
+
+  .fa-times{
+    transform: rotate(180deg);
+  }
+
+  .header .navbar{
+    position: absolute;
+    top: 99%;
+    left: 0; right: 0;
+    background: var(--white);
+    border-top: .1rem solid var(--secondary);
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+
+  .header .navbar.active{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .header .navbar a{
+    display: block;
+    margin: 2rem;
+  }
+
+  .home .slide .content{
+    width: 40rem;
+  }
+
+  .home .slide .content h3{
+    font-size: 4rem;
+  }
+
+}
+
+@media (max-width: 450px){
+
+  html{
+    font-size: 50%;
+  }
+
+  .home .slide .content h3{
+    font-size: 3rem;
+  }
+
+}
+    </style>
+</head>
+<body>
+    
+    <!-- header -->
+
+    <header class="header">
+
+        <a href="#home" class="logo"><i class="fas fa-bread-slice"></i> Sweet Crumbs</a>
+
+        <nav class="navbar">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#product">Products</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#order">order</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="icons">
+            <div id="cart-btn" class="fas fa-shopping-cart"></div>
+            <div id="menu-btn" class="fas fa-bars"></div>
+        </div>
+
+    </header>
+
+    <!-- header end -->
+
+    <!-- shopping cart -->
+
+    <div class="cart-items-container">
+
+        <div id="close-form" class="fas fa-times"></div>
+        <h3 class="title">checkout</h3>
+
+        <div class="cart-item">
+            <span class="fas fa-times"></span>
+            <img src="images/refreshment.jpg" alt="">
+            <div class="content">
+                <h3>Ferrero Rocher</h3>
+                <div class="price">₹799.00/-</div>
+            </div>
+        </div>
+
+        <div class="cart-item">
+            <span class="fas fa-times"></span>
+            <img src="images/gallery-1.jpg" alt="">
+            <div class="content">
+                <h3>Strawberry Cake</h3>
+                <div class="price">₹499.80/-</div>
+            </div>
+        </div>
+
+        <div class="cart-item">
+            <span class="fas fa-times"></span>
+            <img src="images/gallery-4.jpg" alt="">
+            <div class="content">
+                <h3>Choco Lava Pastry</h3>
+                <div class="price">₹59.29/-</div>
+            </div>
+        </div>
+
+        <a href="#order" class="btn"> Checkout </a>
+
+    </div>
+
+    <!-- shopping cart end-->
+
+    <!-- home -->
+
+    <section class="home" id="home">
+
+        <div class="swiper home-slider">
+
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide slide" style="background: url(images/slider1.jpg) no-repeat;">
+                    <div class="content">
+                        <h3>we bake the world a better place</h3>
+                        <a href="#about" class="btn"> Get started </a>
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide" style="background: url(images/slider2.jpg) no-repeat;">
+                    <div class="content">
+                        <h3>we bake the world a better place</h3>
+                        <a href="#about" class="btn"> get started </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+
+        </div>
+
+    </section>
+
+    <!-- home section ends -->
+
+    <!-- banner -->
+
+    <section class="banner">
+        <img src="images/banner.png" alt="">
+    </section>
+
+
+    <!-- banner end-->
+
+    <!-- about us -->
+
+    <section class="about" id="about">
+
+        <h1 class="heading"> <span>about</span> us </h1>
+
+        <div class="row">
+
+            <div class="image">
+                <img src="images/about.png" alt="">
+            </div>
+
+            <div class="content">
+                <h3>good things come to those <span>who bake </span> for others</h3>
+                <p>At Sweet Crumbs, we believe that every celebration deserves a touch of sweetness. Established with a passion for baking and a love for creating unforgettable moments, our shop has been crafting delicious cakes that bring joy to every occasion.</p>
+                <p>Whether it's a birthday, wedding, or any special event, we're here to make your celebrations truly delightful. At Sweet Crumbs, your happiness is our recipe for success!</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- about us end-->
+
+    <!-- product -->
+
+    <section class="product" id="product">
+
+        <h1 class="heading">our <span> products</span></h1>
+
+        <div class="box-container">
+
+            <div class="box">
+                <div class="image">
+                    <img src="images/cold-beverages.png" alt="">
+                </div>
+                <div class="content">
+                    <h3>Birthday Cake</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <span class="price">₹449.99</span>
+                    <a href="#order" class="btn">add to cart</a>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="images/gallery-1.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3>Strawberry Cake</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="price">₹499.80</span>
+                    <a href="#order" class="btn">add to cart</a>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="images/gallery-4.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3>Pastries</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <span class="price">₹59.29</span>
+                    <a href="#order" class="btn">add to cart</a>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="images/product-4.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3>Wedding Cake</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="price">₹899.99</span>
+                    <a href="#order" class="btn">add to cart</a>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="images/gallery-2.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3>Customized Cakes</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="price">₹999.99</span>
+                    <a href="#order" class="btn">add to cart</a>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="images/refreshment.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3>Ferrero Rocher 24 Pcs</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="price">₹799.00</span>
+                    <a href="#order" class="btn">add to cart</a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- product end-->
+
+
+    <!-- gallery -->
+
+    <section class="gallery" id="gallery">
+
+        <h1 class="heading">our <span> gallery</span></h1>
+
+        <div class="gallery-container">
+
+            <a href="images/gallery-3.jpg" class="box">
+                <img src="images/gallery-3.jpg" alt="">
+                <div class="icons"><i class="fas fa-plus"></i></div>
+            </a>
+
+            <a href="images/burger-frenchfries.jpg" class="box">
+                <img src="images/burger-frenchfries.jpg" alt="">
+                <div class="icons"><i class="fas fa-plus"></i></div>
+            </a>
+
+            <a href="images/coffee-hero-section__2.png" class="box">
+                <img src="images/coffee-hero-section__2.png" alt="">
+                <div class="icons"><i class="fas fa-plus"></i></div>
+            </a>
+
+            <a href="images/gallery-2.jpg" class="box">
+                <img src="images/gallery-2.jpg" alt="">
+                <div class="icons"><i class="fas fa-plus"></i></div>
+            </a>
+
+            <a href="images/gallery-5.jpg" class="box">
+                <img src="images/gallery-5.jpg" alt="">
+                <div class="icons"><i class="fas fa-plus"></i></div>
+            </a>
+
+            <a href="images/desserts.jpg" class="box">
+                <img src="images/desserts.jpg" alt="">
+                <div class="icons"><i class="fas fa-plus"></i></div>
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- gallery end -->
+
+    <!-- weekly promotions -->
+
+    <section class="promotion">
+
+        <h1 class="heading">weekly <span>promotions</span></h1>
+
+        <div class="box-container">
+
+            <div class="box">
+                <div class="content">
+                    <h3>Chocolate Cake</h3>
+                    <p>Composition: Rich sponge, dark ganache</p><p>Flavour: Intense, smooth cocoa burst</p><p>Price: ₹499 (500g)</p>
+                </div>
+
+                <img src="images/promotion1.png" alt="">
+            </div>
+
+            <div class="box">
+                <img src="images/promotion2.png" alt="">
+                <div class="content">
+                    <h3>Nut Cake</h3>
+                    <p>Composition: Nut-loaded dense sponge</p><p>Flavour: Buttery, crunchy, lightly sweet</p><p>Price: ₹549 (500g)</p>
+                </div>
+                
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- weekly promotions ends -->
+
+    <!-- team -->
+
+    <section class="team" id="team">
+
+        <h1 class="heading">our  <span>team</span></h1>
+
+        <div class="box-container">
+
+            <div class="box">
+                <div class="image">
+                    <img src="images/sm.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3>Subhash Mangal</h3>
+                    <p>Manager</p>
+                    <div class="share">
+                        <i class="fab fa-facebook-f"></i>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="images/nb.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3>Nitin Bansal</h3>
+                    <p>Head Chef</p>
+                    <div class="share">
+                        <i class="fab fa-facebook-f"></i>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="images/man.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3>Arnav Pandey</h3>
+                    <p>Junior Baker</p>
+                    <div class="share">
+                        <i class="fab fa-facebook-f"></i>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- team -->
+
+    <!-- parallax -->
+
+    <section class="parallax">
+
+        <h1 class="heading">range of <span>products</span></h1>
+
+        <div class="box-container">
+
+            <div class="box">
+                <div class="image">
+                    <img src="images/parallax-1.png" alt="">
+                </div>
+                <div class="content">
+                    <h3>Pastries</h3>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="images/parallax-2.png" alt="">
+                </div>
+                <div class="content">
+                    <h3>Cakes</h3>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="images/parallax-3.png" alt="">
+                </div>
+                <div class="content">
+                    <h3>Donuts</h3>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- parallax -->
+
+    <!-- review -->
+
+    <section class="review" id="review">
+
+        <h1 class="heading"> customer's <span>review</span> </h1>
+
+        <div class="box-container">
+
+            <div class="box">
+                <img src="images/t1.jpg" class="user" alt="">
+                <h3>Neha Gupta</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>Sweet Crumbs Bakery has completely redefined what fresh means to me. Their cakes are incredibly soft, rich in flavor, and you can feel the love and craftsmanship in every slice. It's my go-to for every celebration now!</p>
+            </div>
+
+            <div class="box">
+                <img src="images/t2.jpg" class="user" alt="">
+                <h3>Aditya Dev</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>From the moment you walk into Sweet Crumbs, you know you're in for something special. The aroma, the attention to detail, and the genuine warmth from the team make the whole experience unforgettable. Plus, their chocolate cake is out of this world!</p>
+            </div>
+
+            <div class="box">
+                <img src="images/t3.jpg" class="user" alt="">
+                <h3>Anshika Singhal</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>I ordered from Sweet Crumbs for a family gathering, and everyone was raving about it! The cakes aren't just desserts, they're a full experience. Fresh, beautifully made, and truly satisfying. Can't wait to try more from their menu</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- review -->
+
+    <!-- order -->
+
+    <section class="order" id="order">
+
+        <h1 class="heading"><span>order</span> now </h1>
+
+        <div class="row">
+
+            <div class="image">
+                <img src="images/order.gif" alt="">
+            </div>
+
+            <form action="">
+
+                <div class="inputBox">
+                    <input type="text" placeholder="first name">
+                    <input type="text" placeholder="last name">
+                </div>
+
+                <div class="inputBox">
+                    <input type="email" placeholder="email address">
+                    <input type="number" placeholder="phone number">
+                </div>
+
+
+                <textarea placeholder="your address" name="" id="" cols="30" rows="10"></textarea>
+                <input type="submit" value="order now" class="btn">
+            </form>
+
+        </div>
+
+    </section>
+
+    <!-- order end -->
+
+    <!-- footer -->
+
+    <section class="footer" id="contact">
+
+        <div class="box-container">
+
+            <div class="box">
+                <h3>Address</h3>
+                <p>H-3/98, Sector 18, Rohini, New Delhi</p>
+                <div class="share">
+                    <a href="https://www.instagram.com/anushajain296" class="fab fa-instagram"></a>
+                    <a href="https://www.linkedin.com/in/anusha-jain-294a62314" class="fab fa-linkedin"></a>
+                </div>
+            </div>
+
+            <div class="box">
+                <h3>E-mail</h3>
+                <a href="mailto:anushajain4569@gmail.com" class="link">anushajain4569@gmail.com</a>
+                <a href="mailto:anusha.jain24@iimb.ac.in" class="link">anusha.jain24@iimb.ac.in</a>
+            </div>
+
+            <div class="box">
+                <h3>Call Us</h3>
+                <a href="tel:+91 8010290411" class="link">+91 80102 90411</a>
+            </div>
+
+            <div class="box">
+                <h3>Opening Hours</h3>
+                <p>Monday - Friday: 9:00 AM - 11:00 PM <br> Saturday & Sunday: 8:00 AM - 11:30 PM </p>
+            </div>
+
+        </div>
+
+        <div class="credit">Crafted with Love by <span>Anusha Jain</span> | Sweet Crumbs &copy All Rights Reserved! </div>
+
+    </section>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
+
+    <script>
+        let navbar = document.querySelector('.header .navbar');
+let menu = document.querySelector('#menu-btn');
+
+menu.onclick = () =>{
+    menu.classList.toggle('fa-times');
+    navbar.classList.toggle('active');
+}
+
+let cart = document.querySelector('.cart-items-container');
+
+document.querySelector('#cart-btn').onclick = () =>{
+    cart.classList.add('active');
+}
+
+document.querySelector('#close-form').onclick = () =>{
+    cart.classList.remove('active');
+}
+
+var swiper = new Swiper(".home-slider", {
+    grabCursor:true,
+    loop:true,
+    cnteredSlides:true,
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+});
+    </script>
+
+    <script>
+        lightGallery(document.querySelector('.gallery .gallery-container'));
+    </script>
+
+
+</body>
+</html>
